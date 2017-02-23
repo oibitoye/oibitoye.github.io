@@ -1,0 +1,105 @@
+*@import url('https://fonts.googleapis.com/css?family=Exo|Sansita');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: "Sansita";
+}
+
+a {
+	text-decoration: none;
+}
+
+form div {
+	margin-top: 2px;
+}
+
+#formpage {
+	width: 39%;
+	margin: 50px auto;
+	padding: 20px;
+	background: #0C81C6;
+	
+}
+
+.instruct {
+	font-size: 12px;
+	font-style: italic;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding: 5px;
+}
+
+.legend {
+/*	font-size: 12px;*/
+	font-style: italic;
+	font-weight: bolder;
+/*	color: #3359DF;*/
+
+}
+.textInput {
+	height: 28px;
+	border: 1px solid #5E6E66;
+	font-size: 16px;
+	font-style: italic;
+	padding: 1px;
+	width: 100%;
+}
+
+.category {
+	height: 80px;
+	border: 1px solid #5E6E66;
+	font-size: 15px;
+	font-style: italic;
+	color: #3359DF
+	padding: 1px;
+	width: 100%;
+}
+
+.btn {
+	padding: 7px;
+	width: 100%;
+}
+
+.val_error {
+	color: #FF1F1F;
+}
+
+div#header {
+	background: #3359DF;
+	color: #FFFFFF;
+	border-bottom: 4px #3359DF solid;
+	margin: 0 auto;
+	padding: 30px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+div#footer {
+    position : auto;
+    bottom : 0;
+    width: 100%;
+    background: #3359DF;
+    padding-top: 0px;
+    margin-top : 10px;
+  }
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+.logo {
+	max-width: 100px;
+	height: 70px
+}
+
+footer {
+    display: block;
+}
