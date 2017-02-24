@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<<<<<<< HEAD
+<html lang = "en">
+<head>
+	<meta charset="utf-8" />
+	<title>Andela Ikeji Blog</title>
+	<link href="../styles/main.css" type="text/css" rel="stylesheet">
+<!-- 	<script type="text/javascript">
+		if (document.cookie.indexOf("CrewCentreSession=Valid") == -1) {
+			location.href = "../login.html";
+		}
+	</script> -->
+	<script type="text/javascript">
+
+			export default function toDb(form){
+
+            var mem_name = form.mem_name.value,
+            Bdate = (Date()).toString(),
+            mem_email = form.mem_email.value,
+            mem_blog = form.mem_blog.value;
+            var outform = [mem_name,mem_email,Bdate,mem_blog]
+            return outform;
+        }
+
+		function display(form){
+
+            form.o_mem_name.value = form.mem_name.value;
+            form.o_date.value = (Date()).toString();
+            form.o_mem_email.value = form.mem_email.value;
+            form.o_mem_blog.value = form.mem_blog.value;
+            // form.o_description.value = form.description.value;
+            // form.o_url.value = form.url.value;
+
+            return false;
+        }
+=======
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="../styles/main.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript">
+		
+		window.onload = function() {
+
+  // Check for LocalStorage support.
+  if (localStorage) {
+
+    // Add an event listener for form submissions
+    document.getElementById('formpage').addEventListener('submit', function() {
+      // Get the value of the name field.
+      var name = document.getElementById('mem_name').value;
+      var email = document.getElementById('mem_email').value;
+      var blog = document.getElementById('mem_blog').value;
+      populateStorage();
+
+      // Save the items in localStorage.
+      function populateStorage() {
+      	localStorage.setItem('mem_name', name);
+      	localStorage.setItem('mem_email', email);
+      	localStorage.setItem('mem_blog', blog);
+      	postBlog();
+      }
+    });
+
+  }
+  function postBlog() {
+  	var lines = [];
+  	for (var key in localStorage) {
+  		// lines.push(key + " = " + localStorage[key]);
+  		console.log(key + " : " + localStorage[key])
+  	}
+  	// document.getElementById('posts').innerHTML = lines.join("<br>");
+  } 
+
+}
+>>>>>>> 7785185401b55f814a4e72209487ae2df9a3d3c5
+
+	</script>
+
+</head>
+<body>
+<<<<<<< HEAD
+  <div id="header">
+    <div id="menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="services.html">What We Do</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+<form name="input" action="" method="get" onsubmit="return display(this);">
+        <section>
+            <div class = "scrollWrapper">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Post</th>
+                    <th>Date</th>
+                </tr>
+                <tr>
+                    <td><output name="o_mem_name" style="width:100px; height:20px"></output></td>
+                    <td><output name="o_mem_email" style="width:100px; height:20px"></output></td>
+                    <td><output name="o_mem_blog" style="width:300px; height:20px" ></output></td>
+                    <td><output name="o_date" style="width:100px; height:20px"></output></td>
+                </tr>
+
+
+            </table>
+            </div>
+        </section>
+        <section id = formpage>
+	<legend class="legend">Please provide your name, email address and a comment</legend>
+	<p>
+	<label for="mem_name">Name (required, at least 2 characters)</label>
+		<input id="mem_name" name="mem_name" minlength="2" required="" aria-required="true" type="text">
+=======
+	<div id="header">
+		
+	</div>
+	<div id="posts">
+		
+	</div>
+<form id="formpage" action="" method="POST">
+	<legend class="legend">Please provide your name, email address and a comment</legend>
+	<p>
+	<label for="mem_name">Name (required, at least 2 characters)</label><br>
+		<input id="mem_name" name="name" minlength="2" required="" aria-required="true" type="text">
+>>>>>>> 7785185401b55f814a4e72209487ae2df9a3d3c5
+	</p>
+	<p>
+	<label for="mem_email">E-Mail (required)</label><br>
+		<input class="" id="mem_email" name="email" required="" aria-required="true" type="email">
+	</p>
+	<p>
+<<<<<<< HEAD
+	<label for="mem_blog">Your Post (required)</label><br>
+		<textarea type="text" id="mem_blog" name="mem_blog" aria-required="true" rows="10" cols="33"></textarea>
+=======
+	<label for="curl">URL (optional)</label><br>
+		<input id="curl" name="url" type="url">
+	</p>
+	<p>
+	<label for="mem_blog">Your Post (required)</label><br>
+		<textarea id="mem_blog" name="mem_blog" aria-required="true" rows="10" cols="50"></textarea>
+>>>>>>> 7785185401b55f814a4e72209487ae2df9a3d3c5
+	</p>
+	<p>
+		<input id="submit" value="Submit" type="submit">
+	</p>
+<<<<<<< HEAD
+        </section>	
+</form>
+=======
+		
+</form>
+	<div id="messages"></div>
+>>>>>>> 7785185401b55f814a4e72209487ae2df9a3d3c5
+	<div id="footer"> this is footer</div>
+</body>
+</html>

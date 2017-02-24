@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="../styles/main.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript">
+		
+		window.onload = function() {
+
+  // Check for LocalStorage support.
+  if (localStorage) {
+
+    // Add an event listener for form submissions
+    document.getElementById('formpage').addEventListener('submit', function() {
+      // Get the value of the name field.
+      var name = document.getElementById('mem_name').value;
+      var email = document.getElementById('mem_email').value;
+      var blog = document.getElementById('mem_blog').value;
+      populateStorage();
+
+      // Save the name in localStorage.
+      function populateStorage() {
+      	localStorage.setItem('mem_name', name);
+      	localStorage.setItem('mem_email', email);
+      	localStorage.setItem('mem_blog', blog);
+      	postBlog();
+      }
+    });
+
+  }
+  function postBlog() {
+  	var lines = [];
+  	for (var key in localStorage) {
+  		lines.push(key + " = " + localStorage[key]);
+  	}
+  	document.getElementById('posts').innerHTML = lines.join("<br>");
+  } 
+
+}
+
+	</script>
+
+</head>
+<body>
+	<div id="header">
+		
+	</div>
+	<div id="posts">
+		
+	</div>
+<form id="formpage" action="" method="POST">
+	<legend class="legend">Please provide your name, email address and a comment</legend>
+	<p>
+	<label for="mem_name">Name (required, at least 2 characters)</label>
+		<input id="mem_name" name="name" minlength="2" required="" aria-required="true" type="text">
+	</p>
+	<p>
+	<label for="mem_email">E-Mail (required)</label><br>
+		<input class="" id="mem_email" name="email" required="" aria-required="true" type="email">
+	</p>
+	<p>
+	<label for="curl">URL (optional)</label><br>
+		<input id="curl" name="url" type="url">
+	</p>
+	<p>
+	<label for="mem_blog">Your Post (required)</label><br>
+		<textarea id="mem_blog" name="mem_blog" aria-required="true" rows="10" cols="50"></textarea>
+	</p>
+	<p>
+		<input id="submit" value="Submit" type="submit">
+	</p>
+		
+</form>
+	<div id="messages"></div>
+	<div id="footer"> this is footer</div>
+</body>
+</html>

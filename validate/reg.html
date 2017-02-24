@@ -1,51 +1,206 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
 	<title>Register...</title> 
     <link href="../styles/main.css" type="text/css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="validate.js"> </script>
+    <script type="text/javascript">
+function store() {
+     var username= document.getElementById("username");
+     var fname= document.getElementById("fname");
+     var lname= document.getElementById("lname");
+     var password= document.getElementById("password");
+     var category= [];
+     for (item in document.getElementById("topic")) {
+        category.push(document.getElementById("topic"));
+     };
+     var out = [username, fname, lname, password,category];
+     if (out === null) {
+        location.href = "../login.html";
+     } else {
+        alert("Please Check your imputs");
+     }
+     
+
+    function DatetoStr(DateInput) {
+    return DateInput.toString();
+}
+
+var BlogDate = DatetoStr(Date()); 
+var blogs;
+var category = [];
+var bloglogs = {};
+var follower = [];
+var following = [];
+
+bloglogs.blog = BlogDate;
+
+var user = {
+    "username": username,
+    "fname":fname,
+    "lname":lname,
+    "email":(email).toString(),
+    "password":password,
+    "category":CatToString(category),
+    "blogs":blogToString(bloglogs),
+    "follower":follower,
+    "following":following
+};
+
+// Stringify Array follower
+
+function folwerToString(follower) {
+    var folwerString = JSON.stringify(follower);
+    return folwerString;
+}
+ // Get follower back as Array
+
+function folwerToArray() {
+    var werBack = localStorage.getItem("follower");
+    return JSON.parse(werBack);
+}
+
+// Stringify Array Following
+
+function CatToString(following) {
+    var winString = JSON.stringify(following);
+    return winString;
+}
+ // Get Following back as Array
+
+function catToArray() {
+    var winBack = localStorage.getItem("following");
+    return JSON.parse(winBack);
+}
+
+// Stringify object bloglogs
+
+function blogToString(bloglogs) {
+    var blogString = JSON.stringify(bloglogs);
+    return blogString;
+}
+ // Get Blog back as Object
+
+function blogToObj() {
+    var blogBack = localStorage.getItem("bloglogs");
+    return JSON.parse(blogBack);
+}
+
+// Stringify Array Category
+
+function CatToString(category) {
+    var catString =JSON.stringify(category);
+    return catString;
+}
+ // Get Category back as Array
+
+function catToArray() {
+    var catBack = localStorage.getItem("category");
+    return JSON.parse(catBack);
+}
+
+// Stringify Object User
+
+function UserToString(user) {
+    var userString = JSON.stringify(user);
+    return userString;
+}
+ // Get User back as Object
+
+function userToObj() {
+    var usrBack = localStorage.getItem("user");
+    return JSON.parse(usrBack);
+}
+
+
+
+
+// ---------------------------------------------------
+
+function saveData() {
+    storageValue = UserToString(user);
+    if (!localStorage.getItem(user.value).includes(user["username"])) {
+        // n_user = "user" + (Math.floor((Math.random()*500)+1)).toString();
+        localStorage.setItem(user, UserToString(user) );
+        // alert( "Data successfully stored" );
+    } else {
+        alert( "User already exist" );
+    }
+}
+function loadData() {
+    if (!localStorage.getItem(user.value).includes(user["username"])) {
+        storageValue.value = localStorage.getItem( storageKey.value );
+        alert( 'Data successfully loaded: "' + storageKey.value + ': ' + storageValue.value + '"' );
+    } else {
+        alert( "Please enter storage KEY item" );
+    }
+}
+window.onload = function() {
+    loadData();
+    window.onstorage = function( e ) {
+        var params = ["key","oldValue","newValue","url","storageArea"];
+        var k, s = "";
+        while( k = params.shift() ) {
+        s += "<b>" + k + "</b>: " + e[ k ] + "<br/>";
+        }
+        var div = document.createElement('div');
+        div.innerHTML = s;
+        document.body.appendChild( div );
+    }
+}
+}
+    </script>
 </head>
 <body>
-    <div id="header">
-        
+  <div id="header">
+    <div id="menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="services.html">What We Do</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+      </ul>
     </div>
-    
-    <form method="get" id="reg" action="../form-handler.html" autocomplete="off">
+  </div>
+<!--     <form class="valform" method="get" onsubmit="store()" id="reg" autocomplete="off"> -->
+</head>
+<body>
+
+    <form class="valform" method="get" id="reg" action="../form-handler.html" autocomplete="off">
+<!--     <form name="local_storage_form" method="post"  autocomplete="off" class="valform"> -->
         <fieldset id="formpage">
             <legend class="legend"> Registration Form</legend>
-            <div>
-            <label for="fname" class="instruct">Firstname</label>
+            <p>
+            <label for="fname" class="instruct">Firstname</label> <br>
             <input class="texInput" id="fname" type="text" placeholder="First Name" name="fname">
-            </div>
-            <div>
-            <label for="lname" class="instruct">Lastname</label> 
+            </p>
+            <p>
+            <label for="lname" class="instruct">Lastname</label> <br>
             <input class="texInput" id="lname" type="text" placeholder="Last Name" name="lname">
-        </div>
-        <div>
-            <label for="username" class="instruct">Choose a username</label>  
+            </p>
+            <p>
+            <label for="username" class="instruct">Choose a username</label>  <br>
             <input class="texInput" type="text" placeholder="UserName" name="username">
-        </div>
-        <div> 
-            <label for="email" class="instruct"> Enter your Email Address</label> 
+            </p>
+            <p>
+            <label for="email" class="instruct"> Enter your Email Address</label> <br>
             <input class="texInput" type="email" placeholder="Email Address" name="email">
-        </div>
-        <div>
-            <label for="password" class="instruct"> Type in your preferred Password (must be more than 6 character)</label> 
+            </p>
+            <p>
+            <label for="password" class="instruct"> Type in your preferred Password <br>(must be more than 6 character)</label> <br>
             <input class="texInput" type="password" placeholder="Password" name="password">
-        </div>
-        <div> 
-            <label for="password" class="instruct"> Please confirm your Password (must be same as above)</label> 
+            </p>
+            <p>
+            <label for="password" class="instruct"> Please confirm your Password <br>(must be same as above)</label> <br>
             <input class="texInput" type="password" placeholder="Password Confirmation" name="password_confirmation">
-        </div>
-        <div>
+            </p>
+            <p>
             <label for="agree" class="instruct"> Please agree to our policy</label> 
             <input class="checkbox" type="checkbox" id="agree" name="password_confirmation">
-        </div>
-        <div>
+            </p>
+            <p>
             <label for="topic" class="instruct">Please select your area(s) of Interest
             </label>
-            <input class="checkbox" type="checkbox" id="category" name="category">
             <fieldset id="category_topic" class="instruct">
                 <legend> Categories (Select at least one)</legend>
                 <label for="programming">
@@ -53,19 +208,26 @@
                 </label>
                 <label for="automobiles">
                     <input type="checkbox" name="topic" value="programming">Automobiles
-                </label>
+                </label><br>
                 <label for="network">
                     <input type="checkbox" name="topic" value="network">Networking
                 </label>
-                <label for="topic">
-                    <input type="checkbox" class="topic_error">Please select at least one category.
+                <label for="game">
+                    <input type="checkbox" name="topic" value="network">Game
+                </label><br>
+                <label for="food">
+                    <input type="checkbox" name="topic" value="programming">Food
+                </label>
+                <label for="movies">
+                    <input type="checkbox" name="topic" value="network">Movies
+                </label><br>
+                <label for="topic" class="topic_error">Please select at least one category.
                 </label>
             </fieldset>
-        </div>
-        <div>
-            <input class="submit" type="submit" name="submit
-            " value="Register" >
-        </div>
+            <p>
+            <input class="submit" onsubmit="store()" type="submit" name="submit
+            <input class="submit" type="submit" name="submit" value="Register">
+            </p>
         </fieldset>
     </form>
     
